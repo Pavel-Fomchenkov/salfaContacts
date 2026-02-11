@@ -8,6 +8,7 @@ import com.fpavel.salfaContacts.repository.ClientRepository;
 import com.fpavel.salfaContacts.service.ClientService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,12 +25,13 @@ public class ClientServiceImpl implements ClientService {
     // CREATE
     @Override
     public Client create(ClientCreateDto clientCreateDto) {
-        Client newClient = new Client(clientCreateDto.name(), clientCreateDto.lastName());
+        Client newClient = mapper.clientCreateDtoToClient(clientCreateDto);
         return repository.save(newClient);
     }
 
     // READ
     @Override
+    @Transactional
     public Client getById(long id) {
         return repository.findById(id).orElseThrow(EntityNotFoundException::new);
     }

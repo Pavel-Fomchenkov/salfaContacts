@@ -10,8 +10,9 @@ public class ClientMapper {
     public Client clientDtoToClient(ClientDto dto) {
         return new Client(dto.id(), dto.name(), dto.lastName());
     }
-    public ClientDto clientToClientDto(Client client){
-        return new ClientDto(client.getId(), client.getName(), client.getLastName());
+
+    public ClientDto clientToClientDto(Client client) {
+        return new ClientDto(client.getId(), client.getName(), client.getLastName(), client.getContact());
     }
 
     public Client clientCreateDtoToClient(ClientCreateDto dto) {
