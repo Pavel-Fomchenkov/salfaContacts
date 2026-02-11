@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SalfaContactsApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SalfaContactsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SalfaContactsApplication.class, args);
+    }
 
 }
