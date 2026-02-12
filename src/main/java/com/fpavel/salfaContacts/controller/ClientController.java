@@ -5,13 +5,14 @@ import com.fpavel.salfaContacts.dto.ClientDto;
 import com.fpavel.salfaContacts.model.Client;
 import com.fpavel.salfaContacts.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/client")
 public class ClientController {
     private final ClientService service;
 
@@ -29,7 +30,7 @@ public class ClientController {
         return ResponseEntity.ok(service.create(clientCreateDto));
     }
 
-    // READ
+    //    // READ
     @GetMapping(value = "/{id}", produces = {"application/json"})
     public ResponseEntity<Client> getById(@PathVariable long id) {
         return ResponseEntity.ok(service.getById(id));
@@ -52,11 +53,9 @@ public class ClientController {
 
     // DELETE
     @DeleteMapping()
-    @Operation(summary = "Удаление клиента",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "Требуются id клиента")
-    )
-    public ResponseEntity<Void> delete(@RequestParam Long contactId) {
+    @Operation(summary = "Удаление клиента")
+    public ResponseEntity<Void> delete(@Parameter(description = "Id клиента для удаления", required = true, example = "1")
+                                       @RequestParam Long contactId) {
         service.delete(contactId);
         return ResponseEntity.ok().build();
     }
