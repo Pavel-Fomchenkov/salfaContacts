@@ -2,6 +2,7 @@ package com.fpavel.salfaContacts.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,6 +34,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/user/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/client/**", "/contact/**").hasAnyRole("SUPERUSER", "ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/client/**", "/contact/**").hasAnyRole("SUPERUSER", "ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/client/**", "/contact/**").hasAnyRole("SUPERUSER", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/client/**", "/contact/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
