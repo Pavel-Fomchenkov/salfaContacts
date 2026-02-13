@@ -14,4 +14,8 @@ public class ContactMapper {
     public Contact contactDtoToContact(ContactDto dto) {
         return new Contact(dto.id(), dto.phone(), dto.email());
     }
+
+    public ContactDto contactToContactDto(Contact contact) {
+        return new ContactDto(contact.getId(), contact.getPhone(), contact.getEmail());
+    }
 }

@@ -9,6 +9,7 @@ public interface UserRepository {
     User save(User client);
 
     Optional<User> findById(Long id);
+
     Optional<User> findByLogin(String login);
 
     List<User> findAll();

@@ -13,8 +13,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Contacts manager API")
-                )
+                .info(new Info().title("Contacts manager API"))
                 .addSecurityItem(new SecurityRequirement().addList("jwtToken"))
                 .components(new Components()
                         .addSecuritySchemes("jwtToken",

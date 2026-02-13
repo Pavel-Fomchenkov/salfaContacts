@@ -11,7 +11,7 @@ public class User {
     private String login;
     private String passwordEncrypted;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role = Role.USER;
 
     public User() {
     }
@@ -20,6 +20,12 @@ public class User {
         this.id = id;
         this.login = login;
         this.passwordEncrypted = passwordEncrypted;
+        this.role = role;
+    }
+
+    public User(Long id, String login, Role role) {
+        this.id = id;
+        this.login = login;
         this.role = role;
     }
 

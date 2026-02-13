@@ -21,4 +21,8 @@ public class UserMapper {
     public User userCreateDtoToUser(UserCreateDto dto) {
         return new User(dto.login(), passwordEncoder.encode(dto.password()), dto.role());
     }
+    public User userDtoToUser(UserDto userDto) {
+        return new User(userDto.id(), userDto.login(), userDto.role());
+    }
+
 }

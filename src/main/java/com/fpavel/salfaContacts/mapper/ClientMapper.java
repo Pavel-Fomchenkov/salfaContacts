@@ -2,12 +2,13 @@ package com.fpavel.salfaContacts.mapper;
 
 import com.fpavel.salfaContacts.dto.ClientCreateDto;
 import com.fpavel.salfaContacts.dto.ClientDto;
+import com.fpavel.salfaContacts.dto.ClientNoContactDto;
 import com.fpavel.salfaContacts.model.Client;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ClientMapper {
-    public Client clientDtoToClient(ClientDto dto) {
+    public Client clientNoContactDtoToClient(ClientNoContactDto dto) {
         return new Client(dto.id(), dto.name(), dto.lastName());
     }
 

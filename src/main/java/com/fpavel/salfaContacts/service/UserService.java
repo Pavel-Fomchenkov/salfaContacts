@@ -1,19 +1,18 @@
 package com.fpavel.salfaContacts.service;
 
-import com.fpavel.salfaContacts.dto.UserCreateDto;
-import com.fpavel.salfaContacts.dto.UserDto;
 import com.fpavel.salfaContacts.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    User create(UserCreateDto userCreateDto);
+    User create(User user);
 
-    UserDto getById(long id);
+    Optional<User> getById(long id);
 
-    List<UserDto> getAll();
+    List<User> getAll();
 
-    UserDto update(UserDto userDto);
+    User update(User user);
 
     void delete(Long id);
 }

@@ -10,6 +10,8 @@ public interface ClientRepository {
 
     Optional<Client> findById(Long id);
 
+    Optional<Client> findByContactId(Long contactId);
+
     List<Client> findAll();
 
     void deleteById(Long id);
