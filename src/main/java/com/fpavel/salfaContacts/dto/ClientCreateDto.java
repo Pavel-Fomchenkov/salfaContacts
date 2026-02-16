@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record ClientCreateDto(
         @NotBlank(message = "Имя не может быть null")
-        @Pattern(regexp = "^[A-ZА-Я][a-zа-яё]{1,14}$", message = "Некорректный формат имени") String name,
+        @Pattern(regexp = "^[A-ZА-Я][a-zа-яё]{1,24}$", message = "Некорректный формат имени") String name,
         @NotBlank(message = "Фамилия не может быть null")
-        @Pattern(regexp = "^[A-ZА-Я][a-zа-яё]{1,14}$", message = "Некорректный формат фамилии") String lastName) {
+        @Pattern(regexp = "^[A-ZА-Я][a-zа-яё]{1,24}$", message = "Некорректный формат фамилии") String lastName) {
 }

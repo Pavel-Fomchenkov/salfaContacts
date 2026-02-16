@@ -2,6 +2,7 @@ package com.fpavel.salfaContacts.controller;
 
 import com.fpavel.salfaContacts.dto.UserCreateDto;
 import com.fpavel.salfaContacts.dto.UserDto;
+import com.fpavel.salfaContacts.dto.UserPasswordDto;
 import com.fpavel.salfaContacts.mapper.UserMapper;
 import com.fpavel.salfaContacts.model.User;
 import com.fpavel.salfaContacts.service.UserService;
@@ -65,6 +66,17 @@ public class UserController {
     public ResponseEntity<UserDto> update(@Valid @RequestBody UserDto userDto) {
         User newData = mapper.userDtoToUser(userDto);
         UserDto result = mapper.userToUserDto(service.update(newData));
+        return ResponseEntity.ok(result);
+    }
+
+    @PatchMapping("/password")
+    @Operation(summary = "Изменение пароля пользователя",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "Требуются id и пароль пользователя")
+    )
+    public ResponseEntity<UserDto> changePassword(@Valid @RequestBody UserPasswordDto userPasswordDto) {
+        User newData = mapper.userPasswordDtoToUser(userPasswordDto);
+        UserDto result = mapper.userToUserDto(service.changePassword(newData));
         return ResponseEntity.ok(result);
     }
 

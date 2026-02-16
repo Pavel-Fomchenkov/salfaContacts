@@ -1,6 +1,5 @@
 package com.fpavel.salfaContacts.service.impl;
 
-import com.fpavel.salfaContacts.mapper.ContactMapper;
 import com.fpavel.salfaContacts.model.Client;
 import com.fpavel.salfaContacts.model.Contact;
 import com.fpavel.salfaContacts.repository.ContactRepository;
@@ -17,12 +16,10 @@ import java.util.Optional;
 public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository repository;
-    private final ContactMapper mapper;
     private final ClientService clientService;
 
-    public ContactServiceImpl(ContactRepository repository, ContactMapper mapper, ClientService clientService) {
+    public ContactServiceImpl(ContactRepository repository, ClientService clientService) {
         this.repository = repository;
-        this.mapper = mapper;
         this.clientService = clientService;
     }
 

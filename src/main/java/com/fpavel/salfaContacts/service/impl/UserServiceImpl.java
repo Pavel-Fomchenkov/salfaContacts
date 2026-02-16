@@ -62,4 +62,20 @@ public class UserServiceImpl implements UserService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    @Override
+    public User changePassword(User user) {
+        if (user.getId() == null) {
+            throw new IllegalArgumentException("ID must not be null");
+        }
+        if (user.getPasswordEncrypted() == null) {
+            throw new IllegalArgumentException("Password must not be null");
+        }
+
+        User userDb = repository.findById(user.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User id " + user.getId() + " not found."));
+        userDb.setPasswordEncrypted(user.getPasswordEncrypted());
+
+        return repository.save(userDb);
+    }
 }

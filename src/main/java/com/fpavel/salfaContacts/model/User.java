@@ -8,6 +8,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String login;
     private String passwordEncrypted;
     @Enumerated(EnumType.STRING)
@@ -33,6 +34,11 @@ public class User {
         this.login = login;
         this.passwordEncrypted = passwordEncrypted;
         this.role = role;
+    }
+
+    public User(Long id, String passwordEncrypted) {
+        this.id = id;
+        this.passwordEncrypted = passwordEncrypted;
     }
 
     public Long getId() {

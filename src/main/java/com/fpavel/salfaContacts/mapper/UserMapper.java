@@ -2,6 +2,7 @@ package com.fpavel.salfaContacts.mapper;
 
 import com.fpavel.salfaContacts.dto.UserCreateDto;
 import com.fpavel.salfaContacts.dto.UserDto;
+import com.fpavel.salfaContacts.dto.UserPasswordDto;
 import com.fpavel.salfaContacts.model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -21,8 +22,12 @@ public class UserMapper {
     public User userCreateDtoToUser(UserCreateDto dto) {
         return new User(dto.login(), passwordEncoder.encode(dto.password()), dto.role());
     }
+
     public User userDtoToUser(UserDto userDto) {
         return new User(userDto.id(), userDto.login(), userDto.role());
     }
 
+    public User userPasswordDtoToUser(UserPasswordDto userPasswordDto) {
+        return new User(userPasswordDto.id(), passwordEncoder.encode(userPasswordDto.password()));
+    }
 }

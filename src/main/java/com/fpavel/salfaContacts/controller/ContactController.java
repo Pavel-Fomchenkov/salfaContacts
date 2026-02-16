@@ -50,10 +50,10 @@ public class ContactController {
 
     @GetMapping
     @Operation(summary = "Получение списка контактов")
-    public ResponseEntity<List<Contact>> getAll() {
-        return ResponseEntity.ok(service.getAll());
+    public ResponseEntity<List<ContactDto>> getAll() {
+        List<Contact> result = service.getAll();
+        return ResponseEntity.ok(result.stream().map(mapper::contactToContactDto).toList());
     }
-
 
     // UPDATE
     @PatchMapping

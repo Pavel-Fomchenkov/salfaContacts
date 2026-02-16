@@ -15,4 +15,6 @@ public interface UserRepository {
     List<User> findAll();
 
     void deleteById(Long id);
+
+    boolean existsByRole(User.Role role);
 }
