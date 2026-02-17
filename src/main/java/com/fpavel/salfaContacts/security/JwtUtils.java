@@ -12,11 +12,9 @@ import java.util.Date;
 
 @Component
 public class JwtUtils {
-    @Value("${jwt.secret}")
-    private String jwtSecret;
     private final SecretKey key;
 
-    public JwtUtils(@Value("${jwt.secret}") String jwtSecret) {
+    public JwtUtils(@Value("${JWT_SECRET}") String jwtSecret) {
         this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 

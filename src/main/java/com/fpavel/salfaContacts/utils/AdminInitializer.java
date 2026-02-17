@@ -17,9 +17,9 @@ public class AdminInitializer implements ApplicationRunner {
     private final PasswordEncoder passwordEncoder;
 
     private static final Logger log = LoggerFactory.getLogger(AdminInitializer.class);
-    @Value("${first.admin.login}")
+    @Value("${FIRST_ADMIN_LOGIN}")
     private String adminLogin;
-    @Value("${first.admin.password}")
+    @Value("${FIRST_ADMIN_PASSWORD}")
     private String adminPassword;
 
     public AdminInitializer(UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -38,7 +38,7 @@ public class AdminInitializer implements ApplicationRunner {
                     admin.setPasswordEncrypted(passwordEncoder.encode(adminPassword));
                     admin.setRole(User.Role.ADMIN);
                     userRepository.save(admin);
-                    log.info("Admin created");
+                    log.warn("Admin created");
                 }
                 break;
             } catch (Exception e) {

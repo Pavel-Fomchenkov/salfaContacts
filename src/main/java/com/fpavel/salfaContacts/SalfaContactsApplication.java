@@ -9,7 +9,3 @@ public class SalfaContactsApplication {
         SpringApplication.run(SalfaContactsApplication.class, args);
     }
 }
-
-// TODO
-//  сделать докер и .env файл
-//  сделать красивую документацию README
